@@ -1,26 +1,28 @@
-function getLocation(callback) {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      var coords = {
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-      };
-      callback(coords);
-    });
-  } else {
-    var error = { message: "Geolocation is not supported by this browser." };
-    callback(null, error);
+$(document).ready(function() {
+  function getLocation(callback) {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        var coords = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        };
+        callback(coords);
+      });
+    } else {
+      var error = { message: "Geolocation is not supported by this browser." };
+      callback(null, error);
+    }
   }
-}
 
-getLocation(function (coords, error) {
-  if (error) {
-    var geo_ = error.message;
-    $("#output").text("Error: " + error.message);
-  } else {
-    var geo_ = coords.latitude + ", " + coords.longitude;
-    $("#output").text(
-      "Latitude: " + coords.latitude + ", Longitude: " + coords.longitude
-    );
-  }
+  getLocation(function (coords, error) {
+    if (error) {
+      var geo_ = error.message;
+      $("#output").text("Error: " + error.message);
+    } else {
+      var geo_ = coords.latitude + ", " + coords.longitude;
+      $("#output").text(
+        "Latitude: " + coords.latitude + ", Longitude: " + coords.longitude
+      );
+    }
+  });
 });
