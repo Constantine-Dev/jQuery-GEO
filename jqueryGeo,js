@@ -3,9 +3,9 @@ $(document).ready(function () {
 	navigator.geolocation.getCurrentPosition(function(position) {
 		// Save the latitude and longitude
 		var lat = position.coords.latitude;
-		var lon = position.coords.longitude;
+		var len = position.coords.longitude;
 		// Do something with the location
 		var geo = lat + ", " + len;
-		console.log("Latitude: " + lat + ", Longitude: " + lon);
+		console.log("Latitude: " + lat + ", Longitude: " + len);
 	});
 });
