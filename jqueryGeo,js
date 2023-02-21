@@ -15,8 +15,10 @@ function getLocation(callback) {
 
 getLocation(function (coords, error) {
   if (error) {
+    var geo_ = error.message;
     $("#output").text("Error: " + error.message);
   } else {
+    var geo_ = coords.latitude + ", " + coords.longitude;
     $("#output").text(
       "Latitude: " + coords.latitude + ", Longitude: " + coords.longitude
     );
