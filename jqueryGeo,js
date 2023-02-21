@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 	// Request the user's location
 	navigator.geolocation.getCurrentPosition(function(position) {
 		// Save the latitude and longitude
