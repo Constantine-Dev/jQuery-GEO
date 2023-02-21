@@ -1,0 +1,11 @@
+$(document).ready(function () {
+	// Request the user's location
+	navigator.geolocation.getCurrentPosition(function(position) {
+		// Save the latitude and longitude
+		var lat = position.coords.latitude;
+		var lon = position.coords.longitude;
+		// Do something with the location
+		var geo = lat + ", " + len;
+		console.log("Latitude: " + lat + ", Longitude: " + lon);
+	});
+});
