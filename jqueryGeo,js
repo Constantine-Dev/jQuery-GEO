@@ -1,11 +1,24 @@
-$(document).ready(function() {
-	// Request the user's location
-	navigator.geolocation.getCurrentPosition(function(position) {
-		// Save the latitude and longitude
-		var lat = position.coords.latitude;
-		var len = position.coords.longitude;
-		// Do something with the location
-		var geo = lat + ", " + len;
-		console.log("Latitude: " + lat + ", Longitude: " + len);
-	});
+function getLocation(callback) {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      var coords = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      };
+      callback(coords);
+    });
+  } else {
+    var error = { message: "Geolocation is not supported by this browser." };
+    callback(null, error);
+  }
+}
+
+getLocation(function (coords, error) {
+  if (error) {
+    $("#output").text("Error: " + error.message);
+  } else {
+    $("#output").text(
+      "Latitude: " + coords.latitude + ", Longitude: " + coords.longitude
+    );
+  }
 });
